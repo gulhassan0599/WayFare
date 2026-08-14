@@ -1,28 +1,28 @@
-# Wayfare - Airbnb Clone
+# ✈️ Wayfare
 
-Wayfare is a full-stack web application inspired by Airbnb, allowing users to discover, list, and review properties. Built with Node.js, Express, MongoDB, and EJS, it features user authentication, image uploads, interactive maps, and a robust review system.
+Wayfare is a full-stack web application for discovering, listing, and reviewing properties. Built with Node.js, Express, MongoDB, and EJS, it features user authentication, image uploads, interactive maps, and a robust review system.
 
-## Live Demo
+## 🌐 Live Demo
 [Live Link Placeholder] - *Replace with your deployed app link*
 
-## Key Features
+## ✨ Key Features
 
-* **User Authentication:** Secure signup, login, and logout functionalities using Passport.js.
-* **Property Listings:** Complete CRUD (Create, Read, Update, Delete) operations for property listings. Only listing owners can edit or delete their properties.
-* **Image Uploads:** Seamless image uploading and storage integration using Multer and Cloudinary.
-* **Reviews & Ratings:** Users can leave reviews and ratings on properties they've visited.
-* **Interactive Maps:** Real-time geolocation and interactive maps for each property listing powered by Mapbox.
-* **Data Validation:** Robust server-side data validation using Joi to ensure data integrity.
-* **Session Management:** Secure user sessions stored in MongoDB using `connect-mongo`.
-* **Flash Messages:** Intuitive user feedback with flash messages for success and error notifications.
+* **🔐 User Authentication:** Secure signup, login, and logout functionalities using Passport.js.
+* **🏠 Property Listings:** Complete CRUD (Create, Read, Update, Delete) operations for property listings. Only listing owners can edit or delete their properties.
+* **📸 Image Uploads:** Seamless image uploading and storage integration using Multer and Cloudinary.
+* **⭐ Reviews & Ratings:** Users can leave reviews and ratings on properties they've visited.
+* **🗺️ Interactive Maps:** Real-time geolocation and interactive maps for each property listing powered by Mapbox.
+* **✅ Data Validation:** Robust server-side data validation using Joi to ensure data integrity.
+* **🛡️ Session Management:** Secure user sessions stored in MongoDB using `connect-mongo`.
+* **🔔 Flash Messages:** Intuitive user feedback with flash messages for success and error notifications.
 
-## Tech Stack Used
+## 🛠️ Tech Stack Used
 
 ### Frontend
 * **HTML5 & CSS3**
 * **JavaScript (ES6+)**
 * **EJS (Embedded JavaScript templating)** - View Engine
-* **Bootstrap / Custom CSS** - For responsive design (if applicable)
+* **Bootstrap / Custom CSS** - For responsive design
 * **Mapbox GL JS** - Interactive maps
 
 ### Backend
@@ -37,10 +37,10 @@ Wayfare is a full-stack web application inspired by Airbnb, allowing users to di
 * **Joi** - Schema description and data validation
 * **dotenv** - Environment variable management
 
-## Folder Structure
+## 📁 Folder Structure
 
 ```text
-📁 8. Airbnb
+📁 Wayfare
 ├── 📁 config/          # Database and external service configurations
 ├── 📁 controllers/     # Route logic and business operations (MVC architecture)
 ├── 📁 data/            # Seed data or static JSON files
@@ -60,7 +60,7 @@ Wayfare is a full-stack web application inspired by Airbnb, allowing users to di
 └── 📄 README.md        # Project documentation
 ```
 
-## How to Run it Locally
+## 🚀 How to Run it Locally
 
 Follow these steps to get a local copy up and running on your machine.
 
@@ -76,7 +76,7 @@ Make sure you have the following installed:
 1. **Clone the repository:**
    ```bash
    git clone <your-repository-url>
-   cd "8. Airbnb"
+   cd Wayfare
    ```
 
 2. **Install all NPM dependencies:**
@@ -116,8 +116,8 @@ Make sure you have the following installed:
    ```
    *(Check your `index.js` file if your port is set to a different number, like 3000)*
 
-## Contributing
+## 🤝 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+## 📄 License
 This project is licensed under the ISC License.
