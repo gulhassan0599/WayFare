@@ -1,0 +1,483 @@
+/* =========================================================
+   Wayfare — design tokens
+   A travel-listing identity built around a deep ocean blue,
+   a warm luggage-tag amber, and an editorial serif display
+   face, so it reads like a boutique travel brand rather than
+   a generic bootstrap starter.
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-bg: #F5F6F2;
+  /* misty page background */
+  --color-surface: #FFFFFF;
+  /* card / surface */
+  --color-ink: #1E2A32;
+  /* primary text */
+  --color-ink-soft: #57666D;
+  /* secondary text */
+  --color-primary: #1F4E5F;
+  /* deep ocean blue — brand */
+  --color-primary-dark: #173945;
+  --color-accent: #F2A541;
+  /* luggage-tag amber — CTAs, price */
+  --color-accent-dark: #D68A2A;
+  --color-teal: #4F9D9D;
+  /* links, secondary accent */
+  --color-danger: #C1443D;
+  /* muted brick red — delete */
+  --color-danger-dark: #A5372F;
+  --color-border: #E4E1D8;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --shadow-card: 0 6px 20px rgba(30, 42, 50, 0.08);
+  --shadow-card-hover: 0 14px 32px rgba(30, 42, 50, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+.display-font {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+a {
+  color: var(--color-teal);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* ---------------- Eyebrow label ---------------- */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+
+/* ---------------- Navbar ---------------- */
+.navbar-wayfare {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.brand-mark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-mark svg {
+  flex-shrink: 0;
+}
+
+.search-input {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .search-input {
+    width: 340px;
+  }
+}
+
+.btn-wayfare-primary {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-wayfare-primary:hover {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-wayfare-accent {
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  color: var(--color-ink);
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.55rem 1.4rem;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-wayfare-accent:hover {
+  background-color: var(--color-accent-dark);
+  color: var(--color-ink);
+  transform: translateY(-1px);
+}
+
+.btn-wayfare-outline {
+  background-color: transparent;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  transition: all 0.15s ease;
+}
+
+.btn-wayfare-outline:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn-wayfare-danger {
+  background-color: transparent;
+  border: 1.5px solid var(--color-danger);
+  color: var(--color-danger);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  transition: all 0.15s ease;
+}
+
+.btn-wayfare-danger:hover {
+  background-color: var(--color-danger);
+  color: #fff;
+}
+
+/* ---------------- Hero ---------------- */
+.hero {
+  padding: 3.2rem 0 2.2rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.15;
+  /* max-width: 20ch; */
+}
+
+.hero p {
+  color: var(--color-ink-soft);
+  max-width: 52ch;
+  font-size: 1.05rem;
+}
+
+/* ---------------- Place cards ---------------- */
+.place-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: visible;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.place-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+
+.place-card__media {
+  position: relative;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-border);
+}
+
+.place-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.place-card:hover .place-card__media img {
+  transform: scale(1.05);
+}
+
+/* Signature element: a luggage-tag price badge that hangs off
+   the top-right corner of the photo, like a boarding pass tag. */
+.tag-price {
+  position: absolute;
+  top: 14px;
+  right: -8px;
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.32rem 0.85rem 0.32rem 0.7rem;
+  border-radius: 6px 3px 3px 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tag-price::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  border: 3px solid var(--color-bg);
+}
+
+.tag-price .unit {
+  font-weight: 500;
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+.place-card__body {
+  padding: 1.1rem 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.place-card__title {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--color-ink);
+}
+
+.place-card__location {
+  color: var(--color-ink-soft);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+
+.place-card__actions {
+  margin-top: auto;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.place-card__actions form {
+  margin: 0;
+}
+
+.place-card__actions .btn {
+  flex: 1;
+  font-size: 0.88rem;
+}
+
+.place-card__body>a.stretched-title {
+  color: inherit;
+}
+
+.place-card__body>a.stretched-title:hover .place-card__title {
+  color: var(--color-primary);
+}
+
+/* ---------------- Detail page ---------------- */
+.detail-media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.detail-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.detail-price .unit {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-ink-soft);
+  font-weight: 500;
+}
+
+.info-pill {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ---------------- Forms (new / edit) ---------------- */
+.form-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 2.2rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--color-ink);
+  font-size: 0.92rem;
+}
+
+.form-control {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.9rem;
+  font-family: var(--font-body);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(31, 78, 95, 0.15);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ---------------- Empty state ---------------- */
+.empty-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--color-ink-soft);
+}
+
+/* ---------------- Footer ---------------- */
+.footer-wayfare {
+  background-color: var(--color-primary);
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 4rem;
+}
+
+.footer-wayfare a {
+  color: #fff;
+  opacity: 0.85;
+}
+
+.footer-wayfare a:hover {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.footer-wayfare .brand-mark {
+  color: #fff;
+}
+
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ---------------- Responsive tweaks ---------------- */
+@media (max-width: 767.98px) {
+  .form-card {
+    padding: 1.4rem;
+  }
+
+  .hero {
+    padding: 2rem 0 1.4rem;
+    text-align: center;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tag-price {
+    right: 6px;
+  }
+}
+
+/* ---------------- Responsive tweaks ---------------- */
+#map {
+  height: 50vh;
+}
+
+/* ---------------- Responsive tweaks ---------------- */
+.filters-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.filters-container::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-item {
+  color: var(--color-primary);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.filter-item:hover {
+  
+  cursor: pointer;
+}
+
+.filter-item.active {
+  opacity: 1;
+}

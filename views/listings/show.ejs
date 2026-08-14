@@ -1,0 +1,169 @@
+<% layout('./layouts/boilerplate.ejs') %>
+
+<script>
+  const mapToken = "<%= process.env.MAPBOX_TOKEN %>";
+  const listing = <%- JSON.stringify(lists) %>;
+</script>
+
+  <div class="container py-4 py-md-5">
+
+    <a href="/listings" class="d-inline-flex align-items-center gap-2 mb-4 fw-semibold"
+      style="color: var(--color-ink-soft);">
+      Back to all stays
+    </a>
+
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <div class="detail-media">
+          <img src="<%= lists.image.url %>" alt="<%= lists.image.filename %>">
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <p class="eyebrow mb-2">
+          <%= lists.location %>, <%= lists.country %>
+        </p>
+        <h1 class="mb-3" style="font-size: 2.1rem;">
+          <%= lists.title %>
+        </h1>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <span class="info-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22s7-7.58 7-12.5A7 7 0 0 0 5 9.5C5 14.42 12 22 12 22Z" stroke="currentColor"
+                stroke-width="1.6" />
+              <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6" />
+            </svg>
+            <%= lists.location %>
+          </span>
+          <span class="info-pill">
+            
+            <%= lists.country %>
+          </span>
+        </div>
+
+        <p class="detail-price mb-4">
+          Rs: <%= lists.price.toLocaleString("en-PK") %> <span class="unit">/ night</span>
+        </p>
+
+        <h6 class="text-uppercase small fw-bold mb-2" style="letter-spacing: 0.08em; color: var(--color-ink-soft);">
+          About this place</h6>
+        <p style="color: var(--color-ink-soft); line-height: 1.7;">
+          <%= lists.description %>
+        </p>
+        <p style="color: var(--color-ink-soft); line-height: 1.7;">Created by: @<%= lists.createdBy.username %></p>
+
+        <% if(currUser && currUser._id.equals(lists.createdBy._id)) { %>
+        <div class="d-flex gap-3 mt-4">
+          <a href="/listings/<%= lists._id %>/edit" class="btn btn-wayfare-outline px-4">Edit</a>
+          <form action="/listings/<%= lists._id %>?_method=DELETE" method="POST" class="m-0">
+            <button type="submit" class="btn btn-wayfare-danger px-4"
+              onclick="return confirm('Delete this place? This cannot be undone.');">Delete</button>
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    
+    <!-- ====== MAP ====== -->
+     <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="w border rounded-4 mt-5" id="map"></div>
+        </div>
+      </div>
+     </div>
+    
+    
+    <!-- ====== ADD REVIEW FORM ====== -->
+    <div class="row mt-5">
+
+      <% if(currUser) { %>
+      <div class="col-12">
+        <div class="form-card mb-5">
+          <h6 class="text-uppercase small fw-bold mb-3" style="letter-spacing: 0.08em; color: var(--color-ink-soft);">Leave a review</h6>
+
+          <form action="/listings/<%= lists._id %>/reviews" method="POST" novalidate class="needs-validation">
+
+            <div class="mb-4">
+              <label for="comment" class="form-label">Comment</label>
+              <textarea class="form-control" id="comment" name="review[comment]" placeholder="Share how your stay went..." required></textarea>
+              <div class="invalid-feedback">
+                Comment is required.
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-lg-9">
+                <label for="rating" class="form-label">Rating</label>
+                <fieldset class="starability-slot">
+                  <input type="radio" id="no-rate" class=" form-control input-no-rate" name="review[rating]" value="1" checked />
+                  <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                  <label for="first-rate1" title="Terrible">1 star</label>
+                  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                  <label for="first-rate2" title="Not good">2 stars</label>
+                  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                  <label for="first-rate3" title="Average">3 stars</label>
+                  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                  <label for="first-rate4" title="Very good">4 stars</label>
+                  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                  <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+              </div>
+              
+              <div class=" col-12 col-lg-3 mt-lg-4">
+                <button type="submit" class="btn btn-wayfare-primary px-4 align-items-flex-end">Submit review</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <% } %>
+
+      <!-- ====== REVIEWS ====== -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p class="eyebrow mb-2">Reviews</p>
+            <h2 class="mb-4" style="font-size: 1.6rem;">
+              <% if (lists.reviews && lists.reviews.length > 0) { %>
+                <%= lists.reviews.length %> review<%= lists.reviews.length > 1 ? "s" : "" %>
+              <% } else { %>
+                No reviews yet 
+                <% } %>
+            </h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <!-- <div class="row"> -->
+            <% if (lists.reviews && lists.reviews.length > 0) { %>
+              <div class="d-flex flex-row flex-wrap">
+                <% for (let review of lists.reviews) { %>
+                  <div class="form-card py-3 px-3 mb-2 col-12 col-lg-6">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                      <p class="mb-0" style="color: var(--color-ink-soft); line-height: 1.6;">@<%= review.author.username %></p>
+                      <div class="d-flex align-items-center gap-1">
+                          <p class="starability-result mb-0" data-rating="<%= review.rating %>"></p>
+                      </div>
+                      <% if(currUser && currUser._id.equals(review.author._id)){ %>
+                      <form action="/listings/<%= lists._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" class="m-0">
+                        <button type="submit" class="btn btn-sm btn-wayfare-danger" onclick="return confirm('Delete this review?');">Delete</button>
+                      </form>
+                      <% } %>
+                    </div>
+                    <p class="mb-0" style="line-height: 1.6;"><%=review.comment%></p>
+                  </div>
+                <% } %>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/map.js"></script>

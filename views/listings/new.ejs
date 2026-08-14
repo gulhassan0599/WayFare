@@ -1,0 +1,129 @@
+<% layout('./layouts/boilerplate.ejs') %>
+
+<div class="container py-4 py-md-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <p class="eyebrow mb-2">List a new stay</p>
+      <h1 class="mb-4" style="font-size: 1.9rem">Tell us about the place</h1>
+
+      <div class="form-card">
+        <form
+          class="row g-3 needs-validation"
+          action="/listings"
+          method="POST"
+          novalidate
+          enctype="multipart/form-data"
+        >
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="listing[title]"
+              placeholder="e.g. Sunlit loft near the harbor"
+              required
+            />
+            <div class="invalid-feedback">Title is required.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              name="listing[description]"
+              placeholder="What makes this place worth staying at?"
+              required
+            ></textarea>
+            <div class="invalid-feedback">Description is required.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload Image</label>
+            <input
+              type="file"
+              class="form-control"
+              id="image"
+              name="listing[image]"
+              required
+            />
+            <div class="invalid-feedback">Image is required.</div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3 mb-3">
+              <label for="price" class="form-label">Price per night (Rs)</label>
+              <input
+                type="number"
+                min="0"
+                step="1"
+                class="form-control"
+                id="price"
+                name="listing[price]"
+                placeholder="3420"
+                required
+              />
+              <div class="invalid-feedback">Price is required.</div>
+            </div>
+
+            <div class="col-sm-5 mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input
+                type="text"
+                class="form-control"
+                id="location"
+                name="listing[location]"
+                placeholder="e.g. Lahore"
+                required
+              />
+              <div class="invalid-feedback">Location is required.</div>
+            </div>
+
+            <div class="col-sm-4 mb-3">
+              <label for="category" class="form-label">Category</label>
+              <select
+                class="form-select"
+                name="listing[category]"
+                id="category"
+                required
+              >
+                <option value="" selected disabled>Select Category</option>
+                <option value="Mountains">Mountains</option>
+                <option value="Beachfront">Beachfront</option>
+                <option value="Houseboats">Houseboats</option>
+                <option value="Castles">Castles</option>
+                <option value="Camping">Camping</option>
+                <option value="Cabins">Cabins</option>
+                <option value="Arctic">Arctic</option>
+                <option value="Hiking">Hiking</option>
+                <option value="Pool">Pool</option>
+              </select>
+              <div class="invalid-feedback">Category is required.</div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="country" class="form-label">Country</label>
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              name="listing[country]"
+              placeholder="e.g. Pakistan"
+              required
+            />
+            <div class="invalid-feedback">Country is required.</div>
+          </div>
+
+          <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-wayfare-primary px-4">
+              Publish listing
+            </button>
+            <a href="/listings" class="btn btn-wayfare-outline px-4">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container pt-4 text-center d-flex justify-content-start justify-content-lg-between overflow-auto flex-nowrap gap-4 filters-container">
+  
+  <!-- Base link: Clear both query params to reset everything -->
+  <a href="/listings" class="filter-item">
+    <i class="fa-solid fa-fire"></i>
+    <p>Trending</p>
+  </a>
+
+  <% 
+    // 1. Define our categories and their respective icons
+    const categories = [
+      { name: "Mountains", icon: "fa-mountain" },
+      { name: "Beachfront", icon: "fa-umbrella-beach" },
+      { name: "Houseboats", icon: "fa-ship" },
+      { name: "Castles", icon: "fa-chess-rook" },
+      { name: "Camping", icon: "fa-campground" },
+      { name: "Cabins", icon: "fa-house" },
+      { name: "Arctic", icon: "fa-snowflake" },
+      { name: "Hiking", icon: "fa-person-hiking" },
+      { name: "Pool", icon: "fa-water-ladder" }
+    ];
+  %>
+
+  <!-- 2. Loop dynamically to generate clean, dry markup -->
+  <% for (let cat of categories) { %>
+    <a 
+      href="/listings?<%= search ? 'search=' + search + '&' : '' %>category=<%= cat.name %>" 
+      class="filter-item <%= category === cat.name ? 'active' : '' %>"
+    >
+      <i class="fa-solid <%= cat.icon %>"></i>
+      <p><%= cat.name %></p>
+    </a>
+  <% } %>
+
+</div>

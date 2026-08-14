@@ -1,0 +1,141 @@
+<% layout('./layouts/boilerplate.ejs') %>
+
+<div class="container py-4 py-md-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <p class="eyebrow mb-2">Update listing</p>
+      <h1 class="mb-4" style="font-size: 1.9rem">Edit "<%= lists.title %>"</h1>
+
+      <div class="form-card">
+        <form
+          class="row g-3 needs-validation"
+          action="/listings/<%= lists._id %>?_method=PUT"
+          method="POST"
+          novalidate
+          enctype="multipart/form-data"
+        >
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="listing[title]"
+              value="<%= lists.title %>"
+              required
+            />
+            <div class="invalid-feedback">Title is required.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              name="listing[description]"
+              required
+            >
+<%= lists.description %></textarea
+            >
+            <div class="invalid-feedback">Description is required.</div>
+          </div>
+
+          <div class="row mb-3 d-flex align-items-center flex-wrap">
+            <div class="col-9">
+              <label for="image" class="form-label">Image</label>
+              <input
+                type="file"
+                class="form-control"
+                id="image"
+                name="listing[image]"
+              />
+            </div>
+            <div class="col-3">
+              <img
+                src="<%= lists.image.url %>"
+                alt=""
+                width="150px"
+                height="150"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3 mb-3">
+              <label for="price" class="form-label">Price per night ($)</label>
+              <input
+                type="number"
+                min="0"
+                step="1"
+                class="form-control"
+                id="price"
+                name="listing[price]"
+                value="<%= lists.price %>"
+                required
+              />
+              <div class="invalid-feedback">Price is required.</div>
+            </div>
+
+            <div class="col-sm-5 mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input
+                type="text"
+                class="form-control"
+                id="location"
+                name="listing[location]"
+                value="<%= lists.location %>"
+                required
+              />
+              <div class="invalid-feedback">Location is required.</div>
+            </div>
+
+            <div class="col-sm-4 mb-3">
+              <label for="category" class="form-label">Category</label>
+              <select
+                class="form-select"
+                id="category"
+                name="listing[category]"
+                required
+              >
+                <option value="Mountains" <%= lists.category === "Mountains" ? "selected" : "" %>>Mountains</option>
+                <option value="Beachfront" <%= lists.category === "Beachfront" ? "selected" : "" %>>Beachfront</option>
+                <option value="Houseboats" <%= lists.category === "Houseboats" ? "selected" : "" %>>Houseboats</option>
+                <option value="Castles" <%= lists.category === "Castles" ? "selected" : "" %>>Castles</option>
+                <option value="Camping" <%= lists.category === "Camping" ? "selected" : "" %>>Camping</option>
+                <option value="Cabins" <%= lists.category === "Cabins" ? "selected" : "" %>>Cabins</option>
+                <option value="Arctic" <%= lists.category === "Arctic" ? "selected" : "" %>>Arctic</option>
+                <option value="Hiking" <%= lists.category === "Hiking" ? "selected" : "" %>>Hiking</option>
+                <option value="Pool" <%= lists.category === "Pool" ? "selected" : "" %>>Pool</option>
+              </select>
+              <div class="invalid-feedback">Category is required.</div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="country" class="form-label">Country</label>
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              name="listing[country]"
+              value="<%= lists.country %>"
+              required
+            />
+            <div class="invalid-feedback">Country is required.</div>
+          </div>
+
+          <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-wayfare-primary px-4">
+              Save changes
+            </button>
+            <a
+              href="/listings/<%= lists._id %>"
+              class="btn btn-wayfare-outline px-4"
+              >Cancel</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

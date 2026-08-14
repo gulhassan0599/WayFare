@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-md navbar-wayfare position-fixed w-100 z-1">
+  <div class="container-fluid px-3 px-md-4">
+    <!-- Brand -->
+    <a class="navbar-brand brand-mark" href="/listings">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6" />
+        <path d="M15.5 8.5L13 13L8.5 15.5L11 11L15.5 8.5Z" fill="currentColor" />
+      </svg>
+      Wayfare
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#wayfareNav"
+      aria-controls="wayfareNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Desktop Search -->
+    <div class="d-none d-md-flex mx-auto">
+      <form action="/listings" method="GET" class="d-flex" role="search">
+        <input 
+          name="search" 
+          class="form-control search-input rounded-5 border shadow-sm me-2" 
+          type="search" 
+          placeholder="Search by country or location" 
+          aria-label="Search" 
+          required
+        />
+        <button class="btn btn-wayfare-primary" type="submit">Search</button>
+      </form>
+    </div>
+
+    <!-- Collapsible content (Mobile Search + Nav Links) -->
+    <div class="collapse navbar-collapse justify-content-end text-center" id="wayfareNav">
+      <!-- Mobile Search -->
+      <form action="/listings" method="GET" class="d-flex d-md-none mt-3 mb-3" role="search">
+        <input 
+          name="search" 
+          class="form-control search-input rounded-5 border shadow-sm me-2" 
+          type="search" 
+          placeholder="Search by country or location" 
+          aria-label="Search" 
+          required
+        />
+        <button class="btn btn-wayfare-primary" type="submit">Search</button>
+      </form>
+
+      <!-- Nav Links -->
+      <ul class="navbar-nav gap-2 mt-2 mt-md-0">
+        <% if(!currUser){ %>
+        <li class="nav-item">
+          <a class="btn btn-wayfare-primary w-100" href="/users/signup">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-wayfare-primary w-100" href="/users/login">Log In</a>
+        </li>
+        <% } else {%>
+        <li class="nav-item">
+          <a class="btn btn-wayfare-primary w-100" href="/listings/new">Add new place</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-wayfare-primary w-100" href="/users/logout">Log Out</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

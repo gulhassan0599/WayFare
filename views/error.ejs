@@ -1,0 +1,39 @@
+<%- layout('/layouts/boilerplate.ejs') %>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="empty-state text-center py-5">
+
+          <p class="eyebrow mb-2">Error <%= statusCode %></p>
+
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-3">
+            <path d="M12 22s7-7.58 7-12.5A7 7 0 0 0 5 9.5C5 14.42 12 22 12 22Z" stroke="var(--color-danger)" stroke-width="1.6"/>
+            <circle cx="12" cy="9.5" r="2.3" stroke="var(--color-danger)" stroke-width="1.6"/>
+            <path d="M12 6.8v.01" stroke="var(--color-danger)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+
+          <h1 class="mb-3" style="font-size: 2rem;">
+            <% if (statusCode === 404) { %>
+              This place doesn't exist.
+            <% } else if (statusCode === 403) { %>
+              You don't have access to this.
+            <% } else { %>
+              Something went wrong.
+            <% } %>
+          </h1>
+
+          <p class="mb-4" style="color: var(--color-ink-soft);">
+            <%= message %>
+          </p>
+
+          <div class="d-flex justify-content-center gap-3">
+            <a href="/listings" class="btn btn-wayfare-primary px-4">Back to all stays</a>
+            <a href="javascript:history.back()" class="btn btn-wayfare-outline px-4">Go back</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
