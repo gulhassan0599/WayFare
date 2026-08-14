@@ -3,7 +3,7 @@
 Wayfare is a full-stack web application for discovering, listing, and reviewing properties. Built with Node.js, Express, MongoDB, and EJS, it features user authentication, image uploads, interactive maps, and a robust review system.
 
 ## 🌐 Live Demo
-[Live Link Placeholder] - *Replace with your deployed app link*
+[Live Link Placeholder] - *https://wayfare.up.railway.app/*
 
 ## ✨ Key Features
 
