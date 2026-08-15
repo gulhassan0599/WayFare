@@ -1,8 +1,16 @@
 {
   "name": "wayfare",
   "version": "1.0.0",
-  "description": "",
+  "description": "Wayfare is a full-stack web application for discovering, listing, and reviewing properties. Built with Node.js, Express, MongoDB, and EJS, it features user authentication, image uploads, interactive maps, and a robust review system.",
   "keywords": [],
+  "homepage": "https://github.com/gulhassan0599/WayFare#readme",
+  "bugs": {
+    "url": "https://github.com/gulhassan0599/WayFare/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gulhassan0599/WayFare.git"
+  },
   "license": "ISC",
   "author": "Gul_Hassan",
   "type": "commonjs",
@@ -12,7 +20,7 @@
   },
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.16.2",
-    "cloudinary": "^2.10.0",
+    "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^6.0.0",
     "cookie-parser": "^1.4.7",
